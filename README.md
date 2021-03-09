@@ -6,5 +6,5 @@
 
 ## Technologies used: React, JSX, CSS3
 
-### API used in this project: [](https://developer.nytimes.com/apis)
+### API used in this project: [nytimes](https://developer.nytimes.com/apis)
 
