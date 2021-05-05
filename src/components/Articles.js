@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Form from "./Form.js";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import Details from "./Details.js";
 
 export default function Input() {
   const [data, setData] = useState([]);
@@ -30,14 +28,12 @@ export default function Input() {
 
   return (
     <div>
-      {/* <Details data={data} /> */}
       <Form term={term} changeTerm={setTerm} fetch={fetchArticles} />
       {loading && (
         <div className="lds-circle">
           <div></div>
         </div>
       )}
-      {/* {data !== null && <Details data={data} />} */}
       <div className="articles">
         {data.length !== 0 &&
           data.map((article) => {
