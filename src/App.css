@@ -9,6 +9,14 @@
 body {
   background-image: url("https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .opening {
@@ -36,7 +44,7 @@ body {
   margin: 6px;
   padding: 11px;
   border-radius: 10px;
-  background: rgb(245, 239, 230);
+  background: rgb(219, 218, 218);
 }
 
 .article h3 {
@@ -63,6 +71,11 @@ a {
   font-size: 1.4em;
   color: rgb(41, 40, 40);
   cursor: pointer;
+  background-color: rgb(243, 245, 247);
+  padding: 5px 7px;
+  border-radius: 11px;
+  margin: 7px 0;
+  text-decoration: none;
 }
 
 .input {
@@ -86,13 +99,14 @@ a {
 
 /* loading spinner  */
 .lds-circle {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
   display: inline-block;
   transform: translateZ(1px);
 }
 .lds-circle > div {
+  text-align: center;
   display: inline-block;
   width: 64px;
   height: 64px;
@@ -131,5 +145,8 @@ a {
     margin-right: auto;
     margin-left: auto;
     width: 90%;
+  }
+  .form {
+    width: 100%;
   }
 }

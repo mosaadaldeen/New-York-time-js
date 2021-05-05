@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 
 export default function Form({ term, changeTerm, fetch }) {
   const handleSubmit = (e) => {
@@ -16,7 +17,7 @@ export default function Form({ term, changeTerm, fetch }) {
         style={{ width: "300px" }}
         type="text"
         className="input"
-        placeholder="What are you interested in?"
+        placeholder="What are you looking for?"
       />
       {/* <input type="date" name="Date" value={date} /> */}
       <button className="button" type="submit" onClick={fetch}>

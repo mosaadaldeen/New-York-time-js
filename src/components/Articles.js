@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "./Form.js";
-import Modal from "./Modal.js";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import Details from "./Details.js";
 
 export default function Input() {
   const [data, setData] = useState([]);
   const [term, setTerm] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${term}&api-key=8Av9puLnXJ00teXfVKCUUaNaYP0FMTgZ`;
 
@@ -15,8 +15,9 @@ export default function Input() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setData(data.response.docs);
+        const result = data.response.docs;
+        console.log(result);
+        setData(result);
       })
       .catch((err) => {
         console.log(err);
@@ -27,38 +28,31 @@ export default function Input() {
       });
   };
 
-  // debouncing
-
   return (
     <div>
+      {/* <Details data={data} /> */}
       <Form term={term} changeTerm={setTerm} fetch={fetchArticles} />
       {loading && (
         <div className="lds-circle">
           <div></div>
         </div>
       )}
+      {/* {data !== null && <Details data={data} />} */}
       <div className="articles">
         {data.length !== 0 &&
           data.map((article) => {
-            const headline = article.abstract;
+            const id = article._id;
             return (
-              <div key={article._id} className="article">
+              <div key={id} className="article">
                 <h3>{article.headline.main}</h3>
                 <p>{article.byline.original}</p>
                 <p className="section-name">
                   Section: <strong>{article.section_name}</strong>
                 </p>
                 <p>At {new Date(article.pub_date).toLocaleDateString()}</p>
-                <a onClick={() => setIsOpen(true)}> More </a>
-
-                <Modal
-                  // children={headline}
-                  open={isOpen}
-                  onClose={() => setIsOpen(false)}
-                >
-                  <h4>{headline}</h4>
-                  <hr />
-                </Modal>
+                <a className="link" href={article.web_url}>
+                  Read more
+                </a>
               </div>
             );
           })}

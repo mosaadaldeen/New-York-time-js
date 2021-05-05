@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import Articles from "./components/Articles";
-import Modal from "./components/Modal";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Details from "./components/Details";
 
 function App() {
   return (
@@ -10,7 +11,13 @@ function App() {
         Welcome to <code>ReadMe</code>, The place where you read you morning
         newspaper
       </p>
-      <Articles />
+      {/* <Articles /> */}
+      <Router>
+        <Switch>
+          <Route path="/" exact={true} component={Articles} />
+          {/* <Route path="/:id" component={Details} /> */}
+        </Switch>
+      </Router>
     </>
   );
 }
